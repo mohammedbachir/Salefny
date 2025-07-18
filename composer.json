@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.10",
+        "chargily/chargily-pay": "^2.0",
+        "chargily/epay-php": "^3.0"
+    }
+}

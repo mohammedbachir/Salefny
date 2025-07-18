@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>عن الموقع - سلفني</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        /* ===== المتغيرات العامة ===== */
+        :root {
+            --primary-color: #27ae60;
+            --secondary-color: #2ecc71;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --bg-color: #f9f9f9;
+            --border-radius: 6px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --gradient: linear-gradient(135deg, #27ae60, #2ecc71);
+        }
+
+        /* ===== التنسيقات الأساسية ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--dark-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #34495e;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: var(--dark-color);
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* ===== الهيدر ===== */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--dark-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* ===== الجزء الرئيسي ===== */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-right: auto;
+            margin-left: auto;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== قسم القصة ===== */
+        .story-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .story-text {
+            font-size: 18px;
+            line-height: 2;
+            color: var(--text-color);
+        }
+
+        .story-text h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .story-text p {
+            margin-bottom: 20px;
+        }
+
+        .story-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .story-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, rgba(39, 174, 96, 0.2) 0%, rgba(39, 174, 96, 0.2) 100%, transparent 100%);
+            padding: 2px 0;
+            font-weight: 600;
+        }
+
+        /* ===== قسم الرؤية والرسالة ===== */
+        .vision-mission {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .vision-card, .mission-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vision-card::before, .mission-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradient);
+        }
+
+        .vision-card h3, .mission-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .vision-card p, .mission-card p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* ===== قسم القيم ===== */
+        .values-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .value-card {
+            background: var(--gradient);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+            animation: shimmer 1.5s ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(39, 174, 96, 0.3);
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .value-description {
+            font-size: 14px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* ===== قسم الإنجازات ===== */
+        .achievements-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .achievement-card {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievement-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .achievement-label {
+            font-size: 18px;
+            color: var(--dark-color);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .achievement-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== قسم الفريق ===== */
+        .team-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .team-member {
+            background-color: var(--bg-color);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--box-shadow);
+        }
+
+        .member-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .member-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .member-role {
+            font-size: 14px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .member-description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ===== قسم المبادرات ===== */
+        .initiatives-section {
+            padding: 80px 0;
+            background-color: var(--bg-color);
+        }
+
+        .initiatives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .initiative-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+
+        .initiative-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .initiative-header {
+            background: var(--gradient);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .initiative-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .initiative-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .initiative-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .initiative-content {
+            padding: 30px;
+        }
+
+        .initiative-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 20px;
+        }
+
+        .initiative-features {
+            list-style: none;
+        }
+
+        .initiative-features li {
+            padding: 8px 0;
+            padding-right: 25px;
+            position: relative;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .initiative-features li::before {
+            content: "✓";
+            position: absolute;
+            right: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* ===== قسم الدعوة للعمل ===== */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background-color: white;
+            color: var(--primary-color);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-btn.secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-btn.secondary:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* ===== الفوتر ===== */
+        footer {
+            background-color: #1a252f;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-section a {
+            color: #ccc;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            text-align: center;
+            color: #999;
+        }
+
+        /* ===== استجابة ===== */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                background-color: white;
+                position: absolute;
+                top: 70px;
+                right: 15px;
+                box-shadow: var(--box-shadow);
+                border-radius: var(--border-radius);
+                padding: 20px;
+                width: 250px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .vision-mission-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .initiatives-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .auth-buttons {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .auth-buttons .btn {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container header-container">
+        <div class="logo"><span>سلف</span>ني</div>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#" class="nav-link">الرئيسية</a></li>
+                <li><a href="#" class="nav-link">الفئات</a></li>
+                <li><a href="#" class="nav-link">أحدث الكتب</a></li>
+                <li><a href="#" class="nav-link">الباقات</a></li>
+                <li><a href="#" class="nav-link">اتصل بنا</a></li>
+                <li><a href="#" class="nav-link active">عن الموقع</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn btn-secondary">تسجيل الدخول</button>
+            <button class="btn">اشتراك جديد</button>
+        </div>
+        <button class="mobile-menu-toggle" id="mobileMenuToggle"><i class="fa fa-bars"></i></button>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1>من نحن؟</h1>
+            <p>نحن فريق من المهتمين بنشر المعرفة والثقافة في العالم العربي، نؤمن بأن الوصول للكتب حق للجميع</p>
+        </div>
+    </div>
+</section>
+
+<section class="story-section">
+    <div class="container">
+        <h2 class="section-title">قصتنا</h2>
+        <div class="story-content">
+            <div class="story-text">
+                <h3>البداية</h3>
+                <p>بدأت فكرة <span class="highlight">سلفني</span> من حلم بسيط: جعل الكتب في متناول كل شاب عربي. لاحظنا أن الكثير من الشباب يواجهون صعوبة في الوصول للكتب والمراجع المهمة، سواء بسبب ارتفاع الأسعار أو صعوبة الحصول عليها.</p>
+                <p>من هنا وُلدت فكرة منصة رقمية تجمع آلاف الكتب في مكان واحد، بأسعار مناسبة للجميع، مع إمكانية الوصول إليها في أي وقت ومن أي مكان.</p>
+            </div>
+            <div class="story-image">
+                <img src="https://picsum.photos/600/400?random=1" alt="بداية المشروع" />
+            </div>
+        </div>
+        
+        <div class="story-content">
+            <div class="story-image">
+                <img src="https://picsum.photos/600/400?random=2" alt="التطوير" />
+            </div>
+            <div class="story-text">
+                <h3>التطوير والنمو</h3>
+                <p>عملنا بلا كلل لتطوير منصة متطورة تقدم تجربة قراءة فريدة. استثمرنا في أحدث التقنيات لضمان سهولة الاستخدام والأمان.</p>
+                <p>اليوم، نفخر بأن منصة <span class="highlight">سلفني</span> تضم أكثر من 50 ألف كتاب في مختلف المجالات، وتخدم آلاف القراء شهرياً في جميع أنحاء العالم العربي.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="vision-mission">
+    <div class="container">
+        <h2 class="section-title">رؤيتنا ورسالتنا</h2>
+        <div class="vision-mission-grid">
+            <div class="vision-card">
+                <i class="fas fa-eye card-icon"></i>
+                <h3>رؤيتنا</h3>
+                <p>أن نكون المنصة الرقمية الأولى للكتب في العالم العربي، ونساهم في بناء مجتمع قارئ ومثقف يواكب التطور العالمي في عصر المعرفة الرقمية.</p>
+            </div>
+            <div class="mission-card">
+                <i class="fas fa-bullseye card-icon"></i>
+                <h3>رسالتنا</h3>
+                <p>تسهيل الوصول للمعرفة والثقافة من خلال منصة رقمية متطورة تقدم محتوى عربي وعالمي عالي الجودة، بأسعار مناسبة وتجربة استخدام مميزة.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="values-section">
+    <div class="container">
+        <h2 class="section-title">قيمنا</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <i class="fas fa-users value-icon"></i>
+                <h3 class="value-title">الشراكة المجتمعية</h3>
+                <p class="value-description">نؤمن بأهمية الشراكة مع المجتمع والمؤسسات التعليمية لنشر ثقافة القراءة</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-heart value-icon"></i>
+                <h3 class="value-title">الشغف بالمعرفة</h3>
+                <p class="value-description">نعمل بشغف لتوفير أفضل المحتويات المعرفية للقراء العرب</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-balance-scale value-icon"></i>
+                <h3 class="value-title">العدالة والإنصاف</h3>
+                <p class="value-description">نسعى لجعل المعرفة متاحة للجميع دون تمييز أو حواجز</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-lightbulb value-icon"></i>
+                <h3 class="value-title">الابتكار والتطوير</h3>
+                <p class="value-description">نطور منصتنا باستمرار لتقديم أفضل تجربة قراءة رقمية</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-shield-alt value-icon"></i>
+                <h3 class="value-title">الأمان والثقة</h3>
+                <p class="value-description">نحافظ على خصوصية المستخدمين وأمان بياناتهم</p>
+            </div>
+            <div class="value-card">
+                <i class="fas fa-globe value-icon"></i>
+                <h3 class="value-title">الشمولية والتنوع</h3>
+                <p class="value-description">نوفر محتوى متنوع يناسب جميع الفئات والاهتمامات</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="achievements-section">
+    <div class="container">
+        <h2 class="section-title">إنجازاتنا</h2>
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <span class="achievement-number">50,000+</span>
+                <h3 class="achievement-label">كتاب متاح</h3>
+                <p
